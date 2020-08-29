@@ -44,9 +44,13 @@ namespace MersTrenuri.Models
         public string prenumePersoana { get; set; }
 
         [StringLength(30, MinimumLength = 10, ErrorMessage = "Minimum 10 caractere")]
-        [RegularExpression(@"^07.{8,}", ErrorMessage = "Numarul trebuie sa aiba formatul 07xxxxxxxx")]
+        [RegularExpression(@"^07.+", ErrorMessage = "Numarul trebuie sa aiba formatul 07xxxxxxxx")]
         [Display(Name = "Numar Telefon")]
         [DisplayFormat(DataFormatString = "{0:XXXX.XXX.XXX}", ApplyFormatInEditMode = true)]
         public string numarTelefon { get; set; }
+
+        [StringLength(30)]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
     }
 }

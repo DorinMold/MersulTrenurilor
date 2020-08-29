@@ -4,14 +4,20 @@
 
 @if (string.Equals(ViewData["Neautorizare"].ToString(), "Rezervare"))
 {
-    <div>
-        Nu esti autorizat sa vezi aceasta pagina
+    <div class="neautorizat jumbotron">
+        <p class="text-danger text-center">Email-ul folosit pentru autentificare nu este acelasi cu email-ul comenzii. Mai incearca o data</p>
     </div>
 }
-else if ( string.Equals(ViewData["Neautorizare"].ToString(), "Comanda") )
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "RezervareNull"))
 {
-    <div>
-        Nu esti autorizat sa vezi aceasta pagina
+    <div class="neautorizat jumbotron">
+        <p class="text-danger text-center">Trebuie sa te loghezi pentru a continua</p>
+    </div>
+}
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "Comanda"))
+{
+    <div class="neautorizat jumbotron">
+        <p class="text-danger text-center">Trebuie sa te leoghezi pentru a continua</p>
     </div>
 }
 

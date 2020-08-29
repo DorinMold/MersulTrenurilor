@@ -30,6 +30,7 @@ namespace MersTrenuri
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MersTrenuriDb")));
             services.AddTransient<IComandaCrud, ComandaCrud>();
             services.AddRazorPages();
+            services.AddHttpContextAccessor(); //pentru a recupera informatii despre user
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,6 +21,10 @@ ul.navbar-nav li a.nav-link {
     padding: 0 8px;
 }
 
+form#logoutForm button {
+    transform: translateY(-8px);
+}
+
 ul.navbar-nav li:not(:last-of-type) a {
     border-right: 1px solid white;
 }
@@ -46,6 +50,14 @@ div.container-header-statii {
 
 /*Pagina Alegere Ruta - final*/
 
+/*Pagina Neautorizat - start*/
+
+div.neautorizat p {
+    font-size: 20px;
+}
+
+/*Pagina Neautorizat - final*/
+
 /*Pagina Layout de Login/Logout/Rgistration - Inceput*/
 
 .login-logout-tab .card-header-tabs li {
@@ -53,9 +65,15 @@ div.container-header-statii {
     font-size: 20px;
 }
 
+.login-logout-tab form {
+    padding-bottom: 20px;
+}
+
+
 /*Pagina Layout de Login/Logout/Rgistration  - Final*/
 
 /* Pagina "Acasa" - inceput */
+
 div.layout-principal {
     min-height: 86vh;
 }
@@ -146,11 +164,15 @@ ul.ul-login {
 
 ul.ul-login li {
     list-style-type: none;
+    display: contents;
 }
 
 ul.ul-login a {
     align-items: center;
     display: flex;
+    padding: 20px 15px!important;
+    color: chartreuse !important;
+    background: rgba(0,0,0,0.5);
 }
 
 /*Login partial - Final*/
