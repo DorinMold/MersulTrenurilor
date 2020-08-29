@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "";
+    var parametrii = new Dictionary<string, string>();
+}
+@model RutaInfo
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MersTrenuri</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<partial name="_Nav" />
+
+<div class="container container-header-statii pt-5">
+    <div class="row bg-dark text-white h-100">
+        <div class="col-sm-6 text-center pt-sm-3"> Ai ales ruta: </div>
+        @*<div class="col-sm-6"> @ViewData["statiePlecare"]  - @ViewData["statieSosire"] </div>*@
+        <div class="col-sm-6 text-center pt-sm-3"> @Model.StatiePlecare &nbsp; - &nbsp; @Model.StatieSosire </div>
+    </div>
+    <form asp-action="Comanda" method="post">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td> Data Calatorie </td>
+                    <td> Distanta  </td>
+                    <td> Pret  </td>
+                    <td> Rezerva  </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <input type="text" id="datepicker" asp-for="DataBilet" />  </td>
+                    <td> @Model.Distanta  </td>
+                    @* Pentru ca e disabled valoarea nu se trimite mai departe, de aceea folosesc camputile hidden de mai jos *@
+                    <td> @Model.Pret </td>
+
+                    @{
+                        //parametrii.Add("DataBilet", Convert.ToString(@Model.DataBilet));
+                        //parametrii.Add("Distanta", @Model.Distanta.ToString());
+                        //parametrii.Add("Pret", @Model.Pret.ToString());
+                        //parametrii.Add("Plecare", @Model.StatiePlecare);
+                        //parametrii.Add("Sosire", @Model.StatieSosire);
+                    }
+
+                    @*<td> <a asp-action="Comanda"  class="btn btn-primary">Rezerva</a>  </td>*@
+                    <td> <button type="submit" class="btn btn-primary">Rezerva</button>  </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" asp-for="StatiePlecare" />
+        <input type="hidden" asp-for="StatieSosire" />
+        <input type="hidden" asp-for="Distanta" />
+        <input type="hidden" asp-for="Pret" />
+    </form>
+    <a asp-action="index" class="btn btn-danger">Anuleaza</a>
+
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+

@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Mersul Trenurilor";
+    ClasaOrase instantaOrase = new ClasaOrase();
+    instantaOrase.Label = "Statia plecare";
+    //instantaOrase.statie = EnumStatii.Plecare;
+    ViewData["TipStatie"] = EnumStatii.Plecare;
+}
+
+<div class="layout-acasa">
+    <div class="text-white acasa-titlu">
+        <div class="container pb-3">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="pt-4 pb-0 mb-0">Mersul Trenurilor</h2>
+                    <p>Informeaza-te aici si cumpara-ti bilete din timp</p>
+                </div>
+                <div class="col-6">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="parte-centrala container pt-5 text-center">
+        <h3 class="text-center p-4 m-auto">Alege-ti ruta de interes</h3>
+        <div class="intermediar"></div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="p-4 div-select">
+                    <partial name="_SelectView" view-data="ViewData" model="instantaOrase" />
+                </div>
+                @{ instantaOrase.Label = "Statia sosire";
+                    //instantaOrase.statie = EnumStatii.Sosire;
+                    ViewData["TipStatie"] = EnumStatii.Sosire;
+                }
+                <div class="p-4 div-select">
+                    <partial name="_SelectView" view-data="ViewData" model="instantaOrase" />
+                </div>
+            </div>
+            <div class="col-sm-6 buton-cautare">
+                @* Mai jos am folosit jQuery ca sa preia valorile si sa  *@
+                <button class="buton-submit d-block btn btn-primary w-75">Cauta</button>
+
+            </div>
+        </div>
+        <div class="p-5">
+            <div class="row text-center m-5">
+                <h5 class="p-2 m-auto">Cauta-ti rezervarea si fa modificari daca doresti</h5>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-3 col-sm-3"><input id="cautareId" type="text" /></div>
+                <div class="offset-sm-1 col-sm-3"> <button class=" m-auto buton-cauta d-block btn btn-primary w-75">Cauta</button> </div>
+            </div>
+        </div>
+    </main>
+</div>
+

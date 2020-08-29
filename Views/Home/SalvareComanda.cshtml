@@ -1,0 +1,27 @@
+﻿@model Comanda
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="container mt-3 pt-3">
+
+    <h4> @Model.prenumePersoana, ai rezervat biletul de tren cu detaliile:</h4>
+    <hr />
+    <br />
+    <h6>@Model.statiePlecare &nbsp; - &nbsp; @Model.statieSosire</h6>
+    <h6> Bilet valabil pentru data de @Model.DataBilet.ToString() </h6>
+    <br />
+    <p> Poti continua cu efectuarea platii sau poti anula rezervarea mai jos</p>
+    <br />
+    <hr />
+    <div class="row">
+        <div class="col-sm-6">
+            <a asp-action="AnulareComanda" asp-route-id="@Model.Id" class="btn btn-danger">Anuleaza</a>
+        </div>
+        <div class="col-sm-6">
+            <a asp-action="PlasareComanda" asp-route-id="@Model.Id" class="btn btn-success">Continua</a>
+        </div>
+    </div>
+
+</div>
+

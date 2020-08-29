@@ -1,0 +1,189 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+html {
+    font-size: 14px;
+    width: fit-content;
+    min-width:100vw;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+ul.navbar-nav li a.nav-link {
+    padding: 0 8px;
+}
+
+ul.navbar-nav li:not(:last-of-type) a {
+    border-right: 1px solid white;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/*Pagina Alegere Ruta - inceput*/
+
+div.container-header-statii {
+    height: 100px;
+    font-size: 18px;
+}
+
+/*Pagina Alegere Ruta - final*/
+
+/*Pagina Layout de Login/Logout/Rgistration - Inceput*/
+
+.login-logout-tab .card-header-tabs li {
+    list-style-type: none;
+    font-size: 20px;
+}
+
+/*Pagina Layout de Login/Logout/Rgistration  - Final*/
+
+/* Pagina "Acasa" - inceput */
+div.layout-principal {
+    min-height: 86vh;
+}
+
+div.layout-principal main {
+    height: 100%;
+}
+
+div.layout-principal div.layout-acasa {
+    height: 100%;
+    background-image: url("/foto/tren_coperta.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+}
+
+div.div-select select {
+    width: 200px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    font-weight: 500;
+}
+
+div.div-select select:hover {
+    cursor: pointer;
+}
+
+label.label-statie {
+    border-radius: 5px;
+    font-size: 15px;
+    color: chartreuse;
+    width: 200px;
+}
+
+main.parte-centrala {
+    height: 100%;
+}
+
+div.intermediar {
+    height: 50px;
+}
+
+div.layout-acasa main.parte-centrala h3, div.layout-acasa main.parte-centrala h5 {
+    color: chartreuse;
+    width: fit-content;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+div.buton-cautare {
+    display: grid;
+    place-items: center;
+}
+
+div.buton-cautare button {
+    color: white!important;
+}
+
+div.buton-cautare button:hover {
+    cursor: pointer;
+}
+
+
+div.acasa-titlu {
+    box-shadow: 0 8px 5px -5px rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.3);
+}
+
+/* Pagina "Acasa" - Final */
+
+/*Pagina rezervare - Start*/
+
+div.div-rezervare, div-comanda {
+    /*width: fit-content;*/
+}
+
+/*Pagina rezervare - Final*/
+
+/*Login partial - Start*/
+
+ul.ul-login {
+    height: 100%;
+    flex-direction: row;
+    width: fit-content;
+    float: right;
+}
+
+ul.ul-login li {
+    list-style-type: none;
+}
+
+ul.ul-login a {
+    align-items: center;
+    display: flex;
+}
+
+/*Login partial - Final*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+@media (min-width: 768px) {
+    html {
+    font-size: 16px;
+  }
+}
+
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}

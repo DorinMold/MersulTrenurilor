@@ -1,0 +1,20 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Comanda  
+
+@if (Model.numePersoana == "Anulat")
+{
+    <h3 class="container text-center jumbotron mt-5"> Rezervare anulata </h3>
+}
+else
+{
+<div class="container jumbotron mt-5">
+    <h3 class="text-center"> Rezervarea a fost facuta cu succes</h3>
+    <br />
+    <h6 class="text-center"> Comanda ta are id-ul: <strong> @Model.Id . </strong> Retine acest numar (cu el vei putea modifica ulterior rezervarea) </h6>
+ 
+</div>
+
+}

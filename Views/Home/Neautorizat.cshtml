@@ -1,0 +1,17 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (string.Equals(ViewData["Neautorizare"].ToString(), "Rezervare"))
+{
+    <div>
+        Nu esti autorizat sa vezi aceasta pagina
+    </div>
+}
+else if ( string.Equals(ViewData["Neautorizare"].ToString(), "Comanda") )
+{
+    <div>
+        Nu esti autorizat sa vezi aceasta pagina
+    </div>
+}
+

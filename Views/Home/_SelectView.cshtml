@@ -1,0 +1,20 @@
+﻿@model ClasaOrase
+
+@{ 
+    ViewData["StatiePlecare"] = "Cimpoi";
+}
+
+<label class="label-statie d-block bg-dark mx-auto mb-1 py-1"> @Model.Label </label>
+
+@if ((EnumStatii)ViewData["TipStatie"] == EnumStatii.Plecare)
+{
+    <select asp-items="new SelectList(Model.GetOrase())" asp-for="@Model.statiePlecare">
+    </select>
+}
+else
+{
+    <select asp-items="new SelectList(Model.GetOrase())" asp-for="@Model.statieSosire">
+    </select>
+}
+
+

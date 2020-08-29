@@ -1,0 +1,68 @@
+﻿@model MersTrenuri.Models.Comanda
+
+<div class="container mt-4">
+    <h4 class="text-center">Rezervarea nr. @Model.Id</h4>
+    <hr />
+    <div class="div-rezervare col-8 col-sm-6 m-auto">
+        <form asp-action="EditSalvare" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input id="id-comanda" type="hidden" asp-for="Id" value="@Model.Id" />
+            <div class="form-group">
+                <label asp-for="prenumePersoana" class="control-label"></label>
+                <input asp-for="prenumePersoana" class="form-control" />
+                <span asp-validation-for="prenumePersoana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numePersoana" class="control-label"></label>
+                <input asp-for="numePersoana" class="form-control" />
+                <span asp-validation-for="numePersoana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numarTelefon" class="control-label"></label>
+                <input asp-for="numarTelefon" class="form-control" />
+                <span asp-validation-for="numarTelefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Data Bilet </label>
+                <input class="form-control" value="@Model.DataBilet" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">@typeof(Comanda).GetProperty(nameof(Model.Distanta)).Name</label>
+                <input class="form-control" disabled="disabled" value="@Model.Distanta" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Statie Plecare</label>
+                <input class="form-control" value="@Model.statiePlecare" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Statie Sosire</label>
+                <input class="form-control" value="@Model.statieSosire" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">@typeof(Comanda).GetProperty(nameof(Model.Pret)).Name</label>
+                <input class="form-control" value="@Model.Pret" disabled="disabled" />
+            </div>
+            <div class="row mt-3">
+                <div class="form-group offset-sm-2 col-3 mr-4">
+                    <a id="anulare-comanda" class="btn btn-danger"> Anuleaza </a>
+                    @* asp-action="AnulareComanda" asp-route-id="@Model.Id" *@
+                </div>
+                <div class="form-group offset-1 col-3">
+                    <input type="submit" value="Salveaza" class="btn btn-primary" />
+                </div>
+            </div>
+
+            <input type="hidden" asp-for="DataBilet" />
+            <input type="hidden" asp-for="statiePlecare" />
+            <input type="hidden" asp-for="statieSosire" />
+            <input type="hidden" asp-for="Distanta" />
+            <input type="hidden" asp-for="Pret" />
+        </form>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</div>
+

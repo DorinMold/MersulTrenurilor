@@ -1,0 +1,72 @@
+﻿@model MersTrenuri.Models.Comanda
+
+<h4 class="text-center mt-5">Comanda</h4>
+<hr />
+<div class="container">
+    <div class="row p-5 p-sm-0">
+        <div class="div-comanda col-8 col-sm-6 m-auto">
+            <form asp-action="SalvareComanda">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="prenumePersoana" class="control-label"></label><span>*</span>
+                    <input asp-for="prenumePersoana" class="form-control" />
+                    <span asp-validation-for="prenumePersoana" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="numePersoana" class="control-label"></label><span>*</span>
+                    <input asp-for="numePersoana" class="form-control" />
+                    <span asp-validation-for="numePersoana" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="numarTelefon" class="control-label"></label>
+                    <input asp-for="numarTelefon" class="form-control" />
+                    <span asp-validation-for="numarTelefon" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="DataCalatorie" class="control-label">Data Calatorie</label>
+                    <input type="text" id="DataCalatorie" class="form-control" value="@Model.DataBilet.ToString().Substring(0, 10)" disabled="disabled" />
+                </div>
+                <div class="form-group">
+                    <label for="DistantaCalatorie" class="control-label">Distanta</label>
+                    <input id="DistantaCalatorie" class="form-control" disabled="disabled" value="@Model.Distanta" />
+                </div>
+                <div class="form-group">
+                    <label for="stPlecare" class="control-label">Statie Plecare</label>
+                    <input id="stPlecare" class="form-control" disabled="disabled" value="@Model.statiePlecare" />
+                </div>
+                <div class="form-group">
+                    <label for="stSosire" class="control-label">Statie Sosire</label>
+                    <input id="stSosire" class="form-control" disabled="disabled" value="@Model.statieSosire" />
+                </div>
+
+                <div class="form-group">
+                    <label for="PretCalatorie" class="control-label">Pret</label>
+                    <input id="PretCalatorie" class="form-control" disabled="disabled" value="@Model.Pret" />
+                    <span asp-validation-for="Pret" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="DataBilet" />
+                <input type="hidden" asp-for="statiePlecare" />
+                <input type="hidden" asp-for="statieSosire" />
+                <input type="hidden" asp-for="Distanta" />
+                <input type="hidden" asp-for="Pret" />
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="pl-4">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<partial name="_ValidationScriptsPartial" />
+
