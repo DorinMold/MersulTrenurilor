@@ -15,5 +15,7 @@ namespace MersTrenuri.Models
         public Comanda GasireComanda(int id);
         public string EditSalvare(Comanda comanda);
 
+        public IEnumerable<Comanda> ArataComenzi();
+
     }
 }

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MersTrenuri.Models.Comanda>
+
+<div class="p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataBilet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Distanta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.statiePlecare)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.statieSosire)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.numePersoana)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pret)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.prenumePersoana)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.numarTelefon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataBilet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Distanta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.statiePlecare)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.statieSosire)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numePersoana)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pret)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prenumePersoana)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numarTelefon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary float-left mr-2" asp-action="RezervareEditare" asp-route-cautareId="@item.Id">Modifica</a>
+                        <form class="float-left" method="post" asp-action="StergereCom" asp-route-id="@item.Id">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Esti sigur ca vrei sa stergi comanda: @item.Id')">Sterge</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -48,12 +48,15 @@ div.container-header-statii {
     font-size: 18px;
 }
 
+div.notice-stations {
+    font-size: 20px;
+    font-weight: 600;
+}
 /*Pagina Alegere Ruta - final*/
 
 /*Pagina Neautorizat - start*/
-
 div.neautorizat p {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 /*Pagina Neautorizat - final*/
@@ -208,4 +211,18 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+@media screen and (max-width: 576px) {
+    ul.ul-login {
+        width: auto;
+        float: right;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    ul.ul-login li {
+        display:block;
+        height: 48px;
+    }
 }

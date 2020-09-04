@@ -54,7 +54,7 @@ $(document).ready(() => {
         }
     })
 
-    if ( $("#datepicker") ) {
+    if ( $("#datepicker").length ) {
         $(function () {
             $("#datepicker").datepicker({ dateFormat: "dd/mm/yy", minDate: new Date() });
             $("#datepicker").datepicker("show");

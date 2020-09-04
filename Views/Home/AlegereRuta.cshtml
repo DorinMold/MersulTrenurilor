@@ -14,6 +14,14 @@
 <partial name="_Nav" />
 
 <div class="container container-header-statii pt-5">
+    @if (Model.StatiePlecare.Equals(Model.StatieSosire))
+    {
+        <div class="row">
+            <div class="notice-stations offset-sm-2 col-sm-8 p-3 mb-4 text-center bg-warning text-danger">
+                Plecarea si destinatia sunt identice!
+            </div>
+        </div>
+    }
     <div class="row bg-dark text-white h-100">
         <div class="col-sm-6 text-center pt-sm-3"> Ai ales ruta: </div>
         @*<div class="col-sm-6"> @ViewData["statiePlecare"]  - @ViewData["statieSosire"] </div>*@

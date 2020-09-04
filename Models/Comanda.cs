@@ -9,6 +9,7 @@ namespace MersTrenuri.Models
     public class Comanda
     {
         [Key]
+        [Display(Name = "Nr. comanda")]
         public int Id { get; set; }
 
         [Required]

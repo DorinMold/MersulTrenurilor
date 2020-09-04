@@ -20,4 +20,10 @@ else if (string.Equals(ViewData["Neautorizare"].ToString(), "Comanda"))
         <p class="text-danger text-center">Trebuie sa te leoghezi pentru a continua</p>
     </div>
 }
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "Admin"))
+{
+    <div class="neautorizat jumbotron">
+        <p class="text-danger text-center">Administratorii nu pot plasa comenzi, doar clientii</p>
+    </div>
+}
 

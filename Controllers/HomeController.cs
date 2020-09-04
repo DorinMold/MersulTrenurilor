@@ -22,6 +22,7 @@ namespace MersTrenuri.Controllers
         private RutaInfo rutaInfo;
         private SignInManager<MersTrenuriUser> SignInManager;
         private UserManager<MersTrenuriUser> UserManager;
+        private MersTrenuriUser user;
 
         public HomeController(ILogger<HomeController> logger, IComandaCrud comanda, SignInManager<MersTrenuriUser> signInManager, UserManager<MersTrenuriUser> userManager)
         {
@@ -31,21 +32,42 @@ namespace MersTrenuri.Controllers
             UserManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await UserManager.GetUserAsync(User);
+                if ( user.Email.Equals("admin@trenuri.com") )
+                {
+                    ViewData["Admin"] = "True";
+                }
+            }
+                return View();
         }
 
-        public IActionResult AlegereRuta (string statiePlecare, string statieSosire)
+        public async Task<IActionResult> AlegereRuta (string statiePlecare, string statieSosire)
         {
-            
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await UserManager.GetUserAsync(User);
+                if (user.Email.Equals("admin@trenuri.com"))
+                {
+                    ViewData["Neautorizare"] = "Admin";
+                    return View("Neautorizat");
+                }
+            }
                 rutaInfo = new RutaInfo(statiePlecare, statieSosire);
                 rutaInfo.CalculareInfoRuta();
                 return View(rutaInfo);
         } 
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                user = await UserManager.GetUserAsync(User);
+                ViewData["Admin"] = String.Equals(user.Email, "admin@trenuri.com") ? "True" : "";
+            }
             return View();
         }
 
@@ -59,18 +81,25 @@ namespace MersTrenuri.Controllers
         [HttpPost]
         public async Task<IActionResult> Comanda ([Bind("DataBilet, Distanta, StatiePlecare, StatieSosire, Pret")] RutaInfo rutaInfo)
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated) user = await UserManager.GetUserAsync(User);
+            if ( ! (user is null) )
             {
-                var user = await UserManager.GetUserAsync(User);
                 Comanda comanda = new Comanda();
-                comanda.DataBilet = rutaInfo.DataBilet.ToString();
-                comanda.Distanta = Convert.ToInt16(rutaInfo.Distanta);
-                comanda.Pret = Convert.ToInt32(rutaInfo.Pret);
-                comanda.statiePlecare = rutaInfo.StatiePlecare;
-                comanda.statieSosire = rutaInfo.StatieSosire;
-                comanda.Email = user.Email;
+                if ( ! String.IsNullOrEmpty(user.Email)  || user.Email.Equals("admin@trenuri.com"))
+                {
+                    comanda.DataBilet = rutaInfo.DataBilet.ToString();
+                    comanda.Distanta = Convert.ToInt16(rutaInfo.Distanta);
+                    comanda.Pret = Convert.ToInt32(rutaInfo.Pret);
+                    comanda.statiePlecare = rutaInfo.StatiePlecare;
+                    comanda.statieSosire = rutaInfo.StatieSosire;
+                    comanda.Email = user.Email;
 
-                return View(comanda);
+                    return View(comanda);
+                }
+
+                ViewData["Neautorizare"] = "Rezervare";
+                return View("Neautorizat");
+
             } else
             {
                 ViewData["Neautorizare"] = "Comanda";
@@ -94,6 +123,14 @@ namespace MersTrenuri.Controllers
             return RedirectToAction("RezultatComanda", comanda);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> StergereCom(int id)
+        {
+            Comanda comanda = await ComandaDb.AnulareComanda(id);
+            comanda.numePersoana = "Anulat";
+            return RedirectToAction("RezultatComanda", comanda);
+        }
+
         public IActionResult RezultatComanda(int id)
         {
             Comanda comanda = new Comanda();
@@ -104,9 +141,10 @@ namespace MersTrenuri.Controllers
         [HttpGet]
         public async Task<IActionResult> PlasareComanda(int id)
         {
-            var user = await UserManager.GetUserAsync(User);
+            user = await UserManager.GetUserAsync(User);
             Comanda comanda = ComandaDb.GasireComanda(id);
             //comanda.Email = User.FindFirst(ClaimTypes.Email).ToString();
+            if (comanda is null) comanda = ComandaDb.GasireComanda(id);
             comanda.Email = user.Email;
             return View("RezultatComanda", comanda);
         }
@@ -126,15 +164,16 @@ namespace MersTrenuri.Controllers
         [HttpGet]
         public async Task<IActionResult> RezervareEditare ( int cautareId )
         {
-            var user = await UserManager.GetUserAsync(User);
+            user = await UserManager.GetUserAsync(User);
             Comanda comanda = ComandaDb.GasireComanda(cautareId);
-
-            if ( User.Identity.IsAuthenticated && String.Equals(user.Email, comanda.Email))
+           
+            if (comanda is null)
             {
-                if (comanda is null)
-                {
-                    return View("Negasit");
-                }
+                return View("Negasit");
+                
+            } else if (User.Identity.IsAuthenticated && (String.Equals(user.Email, comanda.Email) || user.Email.Equals("admin@trenuri.com")))
+            {
+                if ( user.Email.Equals("admin@trenuri.com")) ViewData["Admin"] = "True";
                 return View("Rezervare", comanda);
             }
             else
@@ -152,9 +191,11 @@ namespace MersTrenuri.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditSalvare ( Comanda comanda )
+        public async Task<IActionResult> EditSalvare ( Comanda comanda )
         {
+            user = await UserManager.GetUserAsync(User);
             string rezultat = ComandaDb.EditSalvare(comanda);
+            if (user.Email.Equals("admin@trenuri.com")) ViewData["Admin"] = "True";
 
             if (rezultat == "Actualizat")
             {
@@ -163,6 +204,14 @@ namespace MersTrenuri.Controllers
             {
                 return NotFound();
             }
+        }
+
+        public async Task<ViewResult> ArataComenzi (string info)
+        {
+            user = await UserManager.GetUserAsync(User);
+            var comenzi = ComandaDb.ArataComenzi();
+            if(!(info is null) && String.Equals(user.Email, "admin@trenuri.com")) ViewData["Admin"] = "True";
+            return View(comenzi);
         }
     }
 }

@@ -23,6 +23,10 @@
                 <span asp-validation-for="numarTelefon" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label"> Email </label>
+                <input class="form-control" value="@Model.Email" disabled="disabled" />
+            </div>
+            <div class="form-group">
                 <label class="control-label"> Data Bilet </label>
                 <input class="form-control" value="@Model.DataBilet" disabled="disabled" />
             </div>
@@ -44,7 +48,7 @@
             </div>
             <div class="row mt-3">
                 <div class="form-group offset-sm-2 col-3 mr-4">
-                    <a id="anulare-comanda" class="btn btn-danger"> Anuleaza </a>
+                    <a id="anulare-comanda" href="#" class="btn btn-danger"> Anuleaza </a>
                     @* asp-action="AnulareComanda" asp-route-id="@Model.Id" *@
                 </div>
                 <div class="form-group offset-1 col-3">
@@ -57,6 +61,7 @@
             <input type="hidden" asp-for="statieSosire" />
             <input type="hidden" asp-for="Distanta" />
             <input type="hidden" asp-for="Pret" />
+            <input type="hidden" asp-for="Email" />
         </form>
     </div>
 

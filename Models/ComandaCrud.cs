@@ -62,5 +62,16 @@ namespace MersTrenuri.Models
         {
             return _context.Comenzi.Any(e => e.Id == id);
         }
+
+        public IEnumerable<Comanda> ArataComenzi ()
+        {
+            if ( _context.Comenzi.First(x => x.Id > 0) is null )
+            {
+                return null;
+            } else
+            {
+                return _context.Comenzi.Select(x => x);
+            }
+        }
     }
 }
