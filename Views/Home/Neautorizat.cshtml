@@ -2,28 +2,34 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@if (string.Equals(ViewData["Neautorizare"].ToString(), "Rezervare"))
+@if (string.Equals(ViewData["Neautorizare"].ToString(), "Rezervare", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
         <p class="text-danger text-center">Email-ul folosit pentru autentificare nu este acelasi cu email-ul comenzii. Mai incearca o data</p>
     </div>
 }
-else if (string.Equals(ViewData["Neautorizare"].ToString(), "RezervareNull"))
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "RezervareNull", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
         <p class="text-danger text-center">Trebuie sa te loghezi pentru a continua</p>
     </div>
 }
-else if (string.Equals(ViewData["Neautorizare"].ToString(), "Comanda"))
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "Comanda", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
         <p class="text-danger text-center">Trebuie sa te leoghezi pentru a continua</p>
     </div>
 }
-else if (string.Equals(ViewData["Neautorizare"].ToString(), "Admin"))
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "Admin", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
         <p class="text-danger text-center">Administratorii nu pot plasa comenzi, doar clientii</p>
+    </div>
+}
+else if (string.Equals(ViewData["Neautorizare"].ToString(), "TraseuZero", StringComparison.OrdinalIgnoreCase))
+{
+    <div class="neautorizat jumbotron">
+        <p class="text-danger text-center">Nu poti plasa comanda pentru o distanta de 0 km</p>
     </div>
 }
 

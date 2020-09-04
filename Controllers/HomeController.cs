@@ -85,7 +85,7 @@ namespace MersTrenuri.Controllers
             if ( ! (user is null) )
             {
                 Comanda comanda = new Comanda();
-                if ( ! String.IsNullOrEmpty(user.Email)  || user.Email.Equals("admin@trenuri.com"))
+                if ( (! String.IsNullOrEmpty(user.Email)  || user.Email.Equals("admin@trenuri.com")) && !rutaInfo.StatiePlecare.Equals(rutaInfo.StatieSosire,StringComparison.OrdinalIgnoreCase))
                 {
                     comanda.DataBilet = rutaInfo.DataBilet.ToString();
                     comanda.Distanta = Convert.ToInt16(rutaInfo.Distanta);
@@ -95,7 +95,11 @@ namespace MersTrenuri.Controllers
                     comanda.Email = user.Email;
 
                     return View(comanda);
-                }
+                } else if (rutaInfo.StatiePlecare.Equals(rutaInfo.StatieSosire, StringComparison.OrdinalIgnoreCase))
+                {
+                    ViewData["Neautorizare"] = "TraseuZero";
+                    return View("Neautorizat");
+                } else
 
                 ViewData["Neautorizare"] = "Rezervare";
                 return View("Neautorizat");

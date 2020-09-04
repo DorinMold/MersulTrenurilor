@@ -122,7 +122,7 @@ div.intermediar {
 div.layout-acasa main.parte-centrala h3, div.layout-acasa main.parte-centrala h5 {
     color: chartreuse;
     width: fit-content;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.7);
     border: 1px solid;
     border-radius: 10px;
 }
