@@ -5,31 +5,31 @@
 @if (string.Equals(ViewData["Neautorizare"].ToString(), "Rezervare", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
-        <p class="text-danger text-center">Email-ul folosit pentru autentificare nu este acelasi cu email-ul comenzii. Mai incearca o data</p>
+        <p class="text-danger text-center">The authentication email address is not the same with the one in your order. Please try again</p>
     </div>
 }
 else if (string.Equals(ViewData["Neautorizare"].ToString(), "RezervareNull", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
-        <p class="text-danger text-center">Trebuie sa te loghezi pentru a continua</p>
+        <p class="text-danger text-center">You have to login to continue</p>
     </div>
 }
 else if (string.Equals(ViewData["Neautorizare"].ToString(), "Comanda", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
-        <p class="text-danger text-center">Trebuie sa te leoghezi pentru a continua</p>
+        <p class="text-danger text-center">You have to login to continue</p>
     </div>
 }
 else if (string.Equals(ViewData["Neautorizare"].ToString(), "Admin", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
-        <p class="text-danger text-center">Administratorii nu pot plasa comenzi, doar clientii</p>
+        <p class="text-danger text-center">Only visitors can make reservations (not Administrators)</p>
     </div>
 }
 else if (string.Equals(ViewData["Neautorizare"].ToString(), "TraseuZero", StringComparison.OrdinalIgnoreCase))
 {
     <div class="neautorizat jumbotron">
-        <p class="text-danger text-center">Nu poti plasa comanda pentru o distanta de 0 km</p>
+        <p class="text-danger text-center">You cannot book reservations for a null km distance</p>
     </div>
 }
 

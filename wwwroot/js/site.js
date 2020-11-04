@@ -50,7 +50,7 @@ $(document).ready(() => {
             });
         } else {
             window.location = location.href;
-            alert('Ai renuntat la stergerea comenzii. Aceasta a ramas activa');
+            alert('You gave up on cancellation. Your order is still active');
         }
     })
 

@@ -6,14 +6,14 @@
 
 @if (Model.numePersoana == "Anulat")
 {
-    <h3 class="container text-center jumbotron mt-5"> Rezervare anulata </h3>
+    <h3 class="container text-center jumbotron mt-5"> Cancelled reservation </h3>
 }
 else
 {
 <div class="container jumbotron mt-5">
-    <h3 class="text-center"> Rezervarea a fost facuta cu succes</h3>
+    <h3 class="text-center"> Reservation made successfully</h3>
     <br />
-    <h6 class="text-center"> Comanda ta are numarul: <strong> @Model.Id. </strong> Retine acest numar (cu el vei putea modifica ulterior rezervarea) </h6>
+    <h6 class="text-center"> Ticket id: <strong> @Model.Id. </strong> Retain this number (you can use it to alter your ticket details) </h6>
  
 </div>
 

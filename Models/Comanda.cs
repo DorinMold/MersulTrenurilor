@@ -9,11 +9,11 @@ namespace MersTrenuri.Models
     public class Comanda
     {
         [Key]
-        [Display(Name = "Nr.")]
+        [Display(Name = "No.")]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Data Bilet")]
+        [Display(Name = "Date")]
         [StringLength(30)]
         public string DataBilet { get; set; }
 
@@ -23,18 +23,18 @@ namespace MersTrenuri.Models
 
         [Required]
         [StringLength(30)]
-        [Display(Name = "Plecare")]
+        [Display(Name = "Departure")]
         public string statiePlecare { get; set; }
 
         [Required]
         [StringLength(30)]
-        [Display(Name="Destinatie")]
+        [Display(Name="Destination")]
         public string statieSosire { get; set; }
 
         [Required]
         [StringLength(30)]
-        [Display(Name="Nume")]
-        [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "Nu poti insera caractere speciale")]
+        [Display(Name="Name")]
+        [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "You cannot insert special characters")]
         public string numePersoana { get; set; }
 
         [Required]
@@ -42,13 +42,13 @@ namespace MersTrenuri.Models
 
         [Required]
         [StringLength(30)]
-        [Display(Name="Prenume")]
-        [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "Nu poti insera caractere speciale")]
+        [Display(Name="First Name")]
+        [RegularExpression(@"[a-zA-Z]+", ErrorMessage = "You cannot insert special characters")]
         public string prenumePersoana { get; set; }
 
-        [StringLength(30, MinimumLength = 10, ErrorMessage = "Minimum 10 caractere")]
-        [RegularExpression(@"^07[0-9]+$", ErrorMessage = "Numarul trebuie sa aiba formatul 07xxxxxxxx")]
-        [Display(Name = "Telefon")]
+        [StringLength(30, MinimumLength = 10, ErrorMessage = "Minimum 10 characters")]
+        [RegularExpression(@"^07[0-9]+$", ErrorMessage = "Your Phone Number has to be of type 07xxxxxxxx")]
+        [Display(Name = "Telephone")]
         [DisplayFormat(DataFormatString = "{0:XXXX.XXX.XXX}", ApplyFormatInEditMode = true)]
         [DataType(DataType.PhoneNumber)]
         public string numarTelefon { get; set; }

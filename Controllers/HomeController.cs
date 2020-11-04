@@ -217,5 +217,11 @@ namespace MersTrenuri.Controllers
             if(!(info is null) && String.Equals(user.Email, "admin@trenuri.com")) ViewData["Admin"] = "True";
             return View(comenzi);
         }
+
+        public ViewResult DeProba ()
+        {
+            var useremail = User.Identity.Name;
+            return View(new { useremail });
+        }
     }
 }

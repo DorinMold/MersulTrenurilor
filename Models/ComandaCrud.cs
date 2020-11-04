@@ -49,14 +49,14 @@ namespace MersTrenuri.Models
             {
                 if ( !ComandaExista(argComanda.Id) )
                 {
-                    return "Negasit";
+                    return "Not found";
                 } else
                 {
                     throw;
                 }
             }
 
-            return "Actualizat";
+            return "Updated";
         }
         private bool ComandaExista(int id)
         {
