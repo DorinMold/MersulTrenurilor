@@ -72,9 +72,9 @@
                     @Html.DisplayFor(modelItem => item.Pret)
                 </td>
                 <td>
-                    <a class="btn btn-secondary float-left mr-2" asp-action="RezervareEditare" asp-route-cautareId="@item.Id">Modifica</a>
+                    <a class="btn btn-secondary float-left mr-2" asp-action="RezervareEditare" asp-route-cautareId="@item.Id">Change</a>
                     <form class="float-left" method="post" asp-action="StergereCom" asp-route-id="@item.Id">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Esti sigur ca vrei sa stergi comanda: @item.Id')">Sterge</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Esti sigur ca vrei sa stergi comanda: @item.Id')">Delete</button>
                     </form>
                 </td>
             </tr>
