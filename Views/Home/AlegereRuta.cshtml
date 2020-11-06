@@ -23,7 +23,7 @@
         </div>
     }
     <div class="row bg-dark text-white h-100">
-        <div class="col-sm-6 text-center pt-sm-3"> Ai ales ruta: </div>
+        <div class="col-sm-6 text-center pt-sm-3"> You have chosen route: </div>
         @*<div class="col-sm-6"> @ViewData["statiePlecare"]  - @ViewData["statieSosire"] </div>*@
         <div class="col-sm-6 text-center pt-sm-3"> @Model.StatiePlecare &nbsp; - &nbsp; @Model.StatieSosire </div>
     </div>
@@ -31,10 +31,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td> Data Calatorie </td>
-                    <td> Distanta  </td>
-                    <td> Pret  </td>
-                    <td> Rezerva  </td>
+                    <td> Date trip </td>
+                    <td> Distance  </td>
+                    <td> Price  </td>
+                    <td> Book  </td>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@
                     }
 
                     @*<td> <a asp-action="Comanda"  class="btn btn-primary">Rezerva</a>  </td>*@
-                    <td> <button type="submit" class="btn btn-primary">Rezerva</button>  </td>
+                    <td> <button type="submit" class="btn btn-primary">Book</button>  </td>
                 </tr>
             </tbody>
         </table>
@@ -62,7 +62,7 @@
         <input type="hidden" asp-for="Distanta" />
         <input type="hidden" asp-for="Pret" />
     </form>
-    <a asp-action="index" class="btn btn-danger">Anuleaza</a>
+    <a asp-action="index" class="btn btn-danger">Cancel</a>
 
 </div>
 

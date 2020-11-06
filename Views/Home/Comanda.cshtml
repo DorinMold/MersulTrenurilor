@@ -6,7 +6,7 @@
 
 @model MersTrenuri.Models.Comanda
 
-<h4 class="text-center mt-5">Comanda</h4>
+<h4 class="text-center mt-5">Reservation</h4>
 <hr />
 <div class="container">
     <div class="row p-5 p-sm-0">
@@ -37,24 +37,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="DataCalatorie" class="control-label">Data Calatorie</label>
+                    <label for="DataCalatorie" class="control-label">Date</label>
                     <input type="text" id="DataCalatorie" class="form-control" value="@Model.DataBilet.ToString().Substring(0, 10)" disabled="disabled" />
                 </div>
                 <div class="form-group">
-                    <label for="DistantaCalatorie" class="control-label">Distanta</label>
+                    <label for="DistantaCalatorie" class="control-label">Distance</label>
                     <input id="DistantaCalatorie" class="form-control" disabled="disabled" value="@Model.Distanta" />
                 </div>
                 <div class="form-group">
-                    <label for="stPlecare" class="control-label">Statie Plecare</label>
+                    <label for="stPlecare" class="control-label">Departure</label>
                     <input id="stPlecare" class="form-control" disabled="disabled" value="@Model.statiePlecare" />
                 </div>
                 <div class="form-group">
-                    <label for="stSosire" class="control-label">Statie Sosire</label>
+                    <label for="stSosire" class="control-label">Arrival</label>
                     <input id="stSosire" class="form-control" disabled="disabled" value="@Model.statieSosire" />
                 </div>
 
                 <div class="form-group">
-                    <label for="PretCalatorie" class="control-label">Pret</label>
+                    <label for="PretCalatorie" class="control-label">Price</label>
                     <input id="PretCalatorie" class="form-control" disabled="disabled" value="@Model.Pret" />
                     <span asp-validation-for="Pret" class="text-danger"></span>
                 </div>
@@ -67,7 +67,7 @@
                 <input type="hidden" asp-for="Email" />
 
                 <div class="form-group">
-                    <input type="submit" value="Finalizeaza" class="btn btn-primary" />
+                    <input type="submit" value="Finalise" class="btn btn-primary" />
                 </div>
             </form>
         </div>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="pl-4">
-    <a asp-action="Index">Pagina intampinare</a>
+    <a asp-action="Index">Welcome page</a>
 </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

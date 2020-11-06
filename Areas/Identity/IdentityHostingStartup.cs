@@ -18,7 +18,7 @@ namespace MersTrenuri.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<AuthDbContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AuthDbContextConnection")));
+                        context.Configuration.GetConnectionString("AuthDbContextConnectionPr")));
 
                 services.AddDefaultIdentity<MersTrenuriUser>(options =>
                 {

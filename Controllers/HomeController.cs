@@ -98,15 +98,18 @@ namespace MersTrenuri.Controllers
                 } else if (rutaInfo.StatiePlecare.Equals(rutaInfo.StatieSosire, StringComparison.OrdinalIgnoreCase))
                 {
                     ViewData["Neautorizare"] = "TraseuZero";
+                    //Unauthorised reservation for a null distance
                     return View("Neautorizat");
                 } else
 
                 ViewData["Neautorizare"] = "Rezervare";
+                //Unauthorised reservation
                 return View("Neautorizat");
 
             } else
             {
                 ViewData["Neautorizare"] = "Comanda";
+                //Unauthorised reservation
                 return View("Neautorizat");
             }
         }
@@ -201,7 +204,7 @@ namespace MersTrenuri.Controllers
             string rezultat = ComandaDb.EditSalvare(comanda);
             if (user.Email.Equals("admin@trenuri.com")) ViewData["Admin"] = "True";
 
-            if (rezultat == "Actualizat")
+            if (rezultat == "Updated")
             {
                 return View(comanda);
             } else
